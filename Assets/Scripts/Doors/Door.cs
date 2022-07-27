@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+namespace Doors
 {
-    public string _NameKey;
+    public class Door : MonoBehaviour
+    {
+        public string NameKey;
+    }
 }

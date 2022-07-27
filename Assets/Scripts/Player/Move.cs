@@ -1,38 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+namespace Player
 {
-    private inventory invent;
+    public class Move : MonoBehaviour
+    {
+        private Inventory invent;
 
-    [SerializeField]
-    private float speed = 5f;//Скорость персонажа
-    Vector3 velocity = Vector3.zero;
-    private Rigidbody rb;//Инициальизация переменный компонента 
+        [SerializeField]
+        private float speed = 5f; //Г‘ГЄГ®Г°Г®Г±ГІГј ГЇГҐГ°Г±Г®Г­Г Г¦Г 
+        Vector3 velocity = Vector3.zero;
+        private Rigidbody rb; //Г€Г­ГЁГ¶ГЁГ Г«ГјГЁГ§Г Г¶ГЁГї ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»Г© ГЄГ®Г¬ГЇГ®Г­ГҐГ­ГІГ  
    
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        rb = GetComponent<Rigidbody>();//Получение данных компонента Rigidbody
-        invent = GetComponent<inventory>();
-    }
-
-    void Update()
-    {
-        float xMov = Input.GetAxisRaw("Horizontal");//Получение данных горизонтальной оси
-        float zMov = Input.GetAxisRaw("Vertical");//Получение данных вертикальной оси
-        Vector3 _moveH = transform.right * xMov;//Смещение по оси х
-        Vector3 _moveW = transform.forward * zMov;//Смещение по оси y
-        velocity = (_moveH + _moveW).normalized * speed;// Вектор смещения 
-    }
-
-    private void FixedUpdate()
-    {
-      
-        if (velocity != Vector3.zero && invent.inventoryActive == false) 
+        void Start()
         {
-            rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);        
+            Cursor.lockState = CursorLockMode.Locked;
+            rb = GetComponent<Rigidbody>(); //ГЏГ®Г«ГіГ·ГҐГ­ГЁГҐ Г¤Г Г­Г­Г»Гµ ГЄГ®Г¬ГЇГ®Г­ГҐГ­ГІГ  Rigidbody
+            invent = GetComponent<Inventory>();
+        }
+
+        void Update()
+        {
+            float xMov = Input.GetAxisRaw("Horizontal");     //ГЏГ®Г«ГіГ·ГҐГ­ГЁГҐ Г¤Г Г­Г­Г»Гµ ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г®Г© Г®Г±ГЁ
+            float zMov = Input.GetAxisRaw("Vertical");       //ГЏГ®Г«ГіГ·ГҐГ­ГЁГҐ Г¤Г Г­Г­Г»Гµ ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г®Г© Г®Г±ГЁ
+            Vector3 _moveH = transform.right * xMov;         //Г‘Г¬ГҐГ№ГҐГ­ГЁГҐ ГЇГ® Г®Г±ГЁ Гµ
+            Vector3 _moveW = transform.forward * zMov;       //Г‘Г¬ГҐГ№ГҐГ­ГЁГҐ ГЇГ® Г®Г±ГЁ y
+            velocity = (_moveH + _moveW).normalized * speed; // Г‚ГҐГЄГІГ®Г° Г±Г¬ГҐГ№ГҐГ­ГЁГї 
+        }
+
+        private void FixedUpdate()
+        {
+      
+            if (velocity != Vector3.zero && invent.inventoryActive == false) 
+            {
+                rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);        
+            }
         }
     }
 }

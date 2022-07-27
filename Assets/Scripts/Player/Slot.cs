@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerClickHandler
+namespace Player
 {
-    public string NameKey;//Õ‡Á‚‡ÌËÂ Ó·˙ÂÍÚ‡
-    public GameObject pref;//œÂÙ‡· Ó·˙ÂÍÚ‡
-    public ActiveItem ActiveItem;
-    public void OnPointerClick(PointerEventData eventData)
+    public class Slot : MonoBehaviour, IPointerClickHandler
     {
-        if (eventData.pointerId == -1) 
+        public string NameKey;  //√ç√†√ß√¢√†√≠√®√• √Æ√°√∫√•√™√≤√†
+        public GameObject pref; //√è√∞√•√¥√†√° √Æ√°√∫√•√™√≤√†
+        public ActiveItem ActiveItem;
+        public void OnPointerClick(PointerEventData eventData)
         {
-            ActiveItem.setActiveItem(GetComponent<Image>().sprite, NameKey);
-        }
-        if (eventData.pointerId == -2) 
-        {
-            NameKey = "";
-            Instantiate(pref, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y-1, Camera.main.transform.position.z), Quaternion.identity);
-            pref = null;
-            GetComponent<Image>().sprite = null;
-            ActiveItem.clearActive();
+            if (eventData.pointerId == -1) 
+            {
+                ActiveItem.setActiveItem(GetComponent<Image>().sprite, NameKey);
+            }
+            if (eventData.pointerId == -2) 
+            {
+                NameKey = "";
+                Instantiate(pref, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y-1, Camera.main.transform.position.z), Quaternion.identity);
+                pref = null;
+                GetComponent<Image>().sprite = null;
+                ActiveItem.clearActive();
+            }
         }
     }
 }

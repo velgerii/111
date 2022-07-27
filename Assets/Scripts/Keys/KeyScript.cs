@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyScript : MonoBehaviour
+namespace Keys
 {
-    public string NameKey;//Название ключа
+    public class KeyScript : MonoBehaviour
+    {
+        public string NameKey; //ГЌГ Г§ГўГ Г­ГЁГҐ ГЄГ«ГѕГ·Г 
+    }
 }
