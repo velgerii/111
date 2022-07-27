@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48105f6074dc9bc4ba4cec99372a9205, type: 3}
+  m_Name: GreenKey
+  m_EditorClassIdentifier: 
+  KeyName: Green key
+  _KSprite: {fileID: 21300000, guid: 92bda874d7b4a5d4394bb90198f09001, type: 3}
+  _Pref: {fileID: 6188088227821809269, guid: 9ea723ecd51224645a00c6f8f52ae470, type: 3}
