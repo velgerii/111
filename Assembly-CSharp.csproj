@@ -57,12 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Move.cs" />
+    <Compile Include="Assets\Scripts\Keys\KeyInfo.cs" />
     <Compile Include="Assets\Scripts\Player\inventory.cs" />
     <Compile Include="Assets\Scripts\Keys\KeyScript.cs" />
     <Compile Include="Assets\Scripts\Player\MouseLook1.cs" />
-    <Compile Include="Assets\Scripts\Player\Slot.cs" />
-    <Compile Include="Assets\Scripts\Keys\KeyInfo.cs" />
     <Compile Include="Assets\Scripts\Player\ActiveItem.cs" />
+    <Compile Include="Assets\Scripts\Player\Slot.cs" />
+    <Compile Include="Assets\Scripts\Doors\Door.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -51,8 +51,11 @@ public class inventory : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "Key" && Input.GetKeyDown(KeyCode.E)) 
             {
-                //Допилить
                 addItem(hit);
+            }
+            if (hit.collider.gameObject.tag == "Door" && Input.GetKeyDown(KeyCode.E)) 
+            {
+                OpenDoor(hit);
             }
         }
     }
@@ -79,8 +82,40 @@ public class inventory : MonoBehaviour
             }
         } 
     }
-    public void SetActiveItem(Sprite _sprite, string _KeyName) 
+    public void OpenDoor(RaycastHit hit) 
     {
-        _active.setActiveItem(_sprite, _KeyName);
+        Door dr = hit.collider.GetComponent<Door>();
+        if (dr._NameKey == _active.KeyName)
+        {
+            Debug.Log("Ебать молодец");
+            hit.collider.gameObject.GetComponent<Renderer>().material.color = new Color(0, 255, 0, 255);
+            _active.clearActive();
+            foreach (Slot _slot in InventSlots)
+            {
+                if (_slot.NameKey == dr._NameKey) 
+                {
+                    _slot.NameKey = "";
+                    _slot.pref = null;
+                    _slot.GetComponent<Image>().sprite = null;
+                }
+            }
+        }
+        else 
+        {
+            
+            Color MainCol = hit.collider.gameObject.GetComponent<Renderer>().material.color;
+
+            _active.clearActive();
+           StartCoroutine( WaitCollor(hit,MainCol));
+
+            
+        }
+    }
+    IEnumerator WaitCollor(RaycastHit hit, Color MainCol) 
+    {
+        hit.collider.gameObject.GetComponent<Renderer>().material.color = new Color(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.5f);
+        hit.collider.gameObject.GetComponent<Renderer>().material.color = MainCol;
+        
     }
 }
